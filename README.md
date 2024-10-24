@@ -52,7 +52,7 @@ cd ast-rule-engine
 mvn clean install
 mvn clean package
 ```
-   ## For Running application locally using Mysql .  --( Recommended)
+   ## For Running application locally using Mysql .(Recommended)
    
 ### 3. Setup Databse Configuration.
   - Ensure MySQL is installed and running.
@@ -76,5 +76,25 @@ mvn clean package
 ```bash
    mvn spring-boot:run
 ```
+
+## For Running application using docker-compose file. (Optional)
+-- No need to create database 
+-- Just build  New Connection in MYSQL workbench. 
+-- Use username: rohan
+-- Use password: rohan
+-- Use Port No: 3309. 
+-- Just Change Configuration for root password in docker-compose file.
+```bash
+MYSQL_ROOT_PASSWORD: your_root_password.
+```
+ a. Build Application
+```bash
+mvn clean install
+mvn clean package
+```
+b. Run with Docker Compose.
+```bash
+docker-compose up 
+
    
  
