@@ -61,14 +61,14 @@ mvn clean package
     CREATE DATABASE rule_engine_db;
   ```
  ### 4. Configure application.properties :
-   -- Update the src/main/resources/application.properties file with your MySQL configuration:
+   - Update the src/main/resources/application.properties file with your MySQL configuration:
    ```bash
      spring.datasource.url=jdbc:mysql://localhost:3306/rule_engine_db
      spring.datasource.username=your_username
      spring.datasource.password=your_password
    ```
 ### 5. Build project. 
-  -- Use Maven (use Intellij Maven terminal) to clean and package project
+  - Use Maven (use Intellij Maven terminal) to clean and package project
   ```bash
     mvn clean package
 ```
@@ -78,12 +78,12 @@ mvn clean package
 ```
 
 ## For Running application using docker-compose file. (Optional)
--- No need to create database 
--- Just build  New Connection in MYSQL workbench. 
--- Use username: rohan
--- Use password: rohan
--- Use Port No: 3309. 
--- Just Change Configuration for root password in docker-compose file.
+- No need to create database 
+- Just build  New Connection in MYSQL workbench. 
+- Use username: rohan
+- Use password: rohan
+- Use Port No: 3309. 
+- Just Change Configuration for root password in docker-compose file.
 ```bash
 MYSQL_ROOT_PASSWORD: your_root_password.
 ```
@@ -94,7 +94,8 @@ mvn clean package
 ```
 b. Run with Docker Compose.
 ```bash
-docker-compose up 
+docker-compose up
+```
 
    
  
