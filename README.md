@@ -96,13 +96,13 @@ b. Run with Docker Compose.
 ```bash
 docker-compose up
 ```
-##6. Access Application
+## 6. Access Application
 - Once the application is runningyou can access the API at :
 ```
   http://localhost:8080
 ```
 
-###📋 API Endpoints (Use Postman for Testing API Endpoints
+### 📋 API Endpoints (Use Postman for Testing API Endpoints
 
 - [API Documentation Link](https://documenter.getpostman.com/view/35351114/2sAY4shNyK)
 
