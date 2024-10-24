@@ -96,6 +96,26 @@ b. Run with Docker Compose.
 ```bash
 docker-compose up
 ```
+##6. Access Application
+- Once the application is runningyou can access the API at :
+```
+  http://localhost:8080
+```
 
-   
+##📋 API Endpoints (Use Postman for Testing API Endpoints
+
+- [API Documentation Link](https://documenter.getpostman.com/view/35351114/2sAY4shNyK)
+
+
+### 1. Create Rule
+- POST /api/rules/create
+- Creates a new rule based on user-defined conditions.
+  
+### 2. Combine Rules
+- POST /api/rules/combine
+- Combines multiple rules into one AST structure.
+
+### 3. Get all rules
+- GET /api/rules/all
+- Get All stored Rules
  
