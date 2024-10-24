@@ -125,17 +125,17 @@ docker-compose up
 - Dynamic Rule Support: Users can define rules on the fly, making the system flexible for different use cases.
 - Tokenization & Parsing: The system uses a custom-built tokenizer and parser to break down rule strings and convert them into AST nodes.
 
-  ## 🏆 Achievements & Performance
+## 🏆 Achievements & Performance
 - Optimized Rule Evaluation: The AST approach reduces the complexity of rule evaluation, improving processing time for large rule sets.
 - Flexible Rule Management: Supports combining multiple rules into a single structure, streamlining rule management for complex business logic.
 
-  ###📚 Documentation
+## 📚 Documentation
   [Full Explanation of Project](Link)
 
-  #### 📬 Contact
+## 📬 Contact
 
-For any inquiries, feel free to reach out to me:
-
+- For any inquiries, feel free to reach out to me:
+  
 **Rohan Chintalwar**  
 Email: [rohanchintalwar27@gmail.com](mailto:rohanchintalwar27@gmail.com)  
 GitHub: [GitHub Profile](https://github.com/yourusername)
