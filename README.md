@@ -35,6 +35,7 @@ To run this project locally, ensure you have the following installed:
 - Docker and Docker Compose
 - MySQL (optional if running through Docker)
 - Maven (for building the project)
+- Postman (for testing API)
 
 ## ⚙️ Setup & Run
 
