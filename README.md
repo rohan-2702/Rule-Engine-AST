@@ -102,7 +102,7 @@ docker-compose up
   http://localhost:8080
 ```
 
-##📋 API Endpoints (Use Postman for Testing API Endpoints
+###📋 API Endpoints (Use Postman for Testing API Endpoints
 
 - [API Documentation Link](https://documenter.getpostman.com/view/35351114/2sAY4shNyK)
 
@@ -119,7 +119,7 @@ docker-compose up
 - GET /api/rules/all
 - Get All stored Rules
  
-## 📊 Rule Design Choices
+### 📊 Rule Design Choices
 - Abstract Syntax Tree (AST): Rules are parsed into an AST for efficient processing, making it easier to manage complex nested conditions.
 - Logical & Arithmetic Operations: The engine supports operations such as AND, OR, NOT, >, <, =, and more.
 - Dynamic Rule Support: Users can define rules on the fly, making the system flexible for different use cases.
@@ -129,7 +129,7 @@ docker-compose up
 - Optimized Rule Evaluation: The AST approach reduces the complexity of rule evaluation, improving processing time for large rule sets.
 - Flexible Rule Management: Supports combining multiple rules into a single structure, streamlining rule management for complex business logic.
 
-  ##📚 Documentation
+  ###📚 Documentation
   [Full Explanation of Project](Link)
 
   #### 📬 Contact
