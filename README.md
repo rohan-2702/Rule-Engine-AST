@@ -72,7 +72,7 @@ mvn clean package
   ```bash
     mvn clean package
 ```
-  -- After building start application
+  - After building start application ( You can also run main springboot app file)
 ```bash
    mvn spring-boot:run
 ```
@@ -119,3 +119,24 @@ docker-compose up
 - GET /api/rules/all
 - Get All stored Rules
  
+## 📊 Rule Design Choices
+- Abstract Syntax Tree (AST): Rules are parsed into an AST for efficient processing, making it easier to manage complex nested conditions.
+- Logical & Arithmetic Operations: The engine supports operations such as AND, OR, NOT, >, <, =, and more.
+- Dynamic Rule Support: Users can define rules on the fly, making the system flexible for different use cases.
+- Tokenization & Parsing: The system uses a custom-built tokenizer and parser to break down rule strings and convert them into AST nodes.
+
+  ## 🏆 Achievements & Performance
+- Optimized Rule Evaluation: The AST approach reduces the complexity of rule evaluation, improving processing time for large rule sets.
+- Flexible Rule Management: Supports combining multiple rules into a single structure, streamlining rule management for complex business logic.
+
+  ##📚 Documentation
+  [Full Explanation of Project](Link)
+
+  #### 📬 Contact
+
+For any inquiries, feel free to reach out to me:
+
+**Rohan Chintalwar**  
+Email: [rohanchintalwar27@gmail.com](mailto:rohanchintalwar27@gmail.com)  
+GitHub: [GitHub Profile](https://github.com/yourusername)
+  
