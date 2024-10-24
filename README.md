@@ -31,7 +31,8 @@ making it ideal for any rule-driven applications such as eligibility verificatio
 
 To run this project locally, ensure you have the following installed:
 
-- JDK 21 or later
+- JDK 21 or later (Strong Requirement)
+- IntelliJ IDEA
 - Docker and Docker Compose
 - MySQL (optional if running through Docker)
 - Maven (for building the project)
@@ -41,8 +42,39 @@ To run this project locally, ensure you have the following installed:
 
 Follow these steps to set up and run the application:
 
-### 1. Clone the Repository
+### 1. Clone the Repository (Recommend Download Zip)
 ```bash
 git clone https://github.com/yourusername/ast-rule-engine.git
 cd ast-rule-engine
  ```
+### 2. Buid the Application 
+```bash
+mvn clean install
+mvn clean package
+```
+   ## For Running application locally using Mysql .  --( Recommended)
+   
+### 3. Setup Databse Configuration.
+  - Ensure MySQL is installed and running.
+  - Create a new database name rule_engine_db in MySQL.
+  ```bash
+    CREATE DATABASE rule_engine_db;
+  ```
+ ### 4. Configure application.properties :
+   -- Update the src/main/resources/application.properties file with your MySQL configuration:
+   ```bash
+     spring.datasource.url=jdbc:mysql://localhost:3306/rule_engine_db
+     spring.datasource.username=your_username
+     spring.datasource.password=your_password
+   ```
+### 5. Build project. 
+  -- Use Maven (use Intellij Maven terminal) to clean and package project
+  ```bash
+    mvn clean package
+```
+  -- After building start application
+```bash
+   mvn spring-boot:run
+```
+   
+ 
