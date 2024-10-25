@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  server:
+    build: .
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/rule_engine
+      SPRING_DATASOURCE_USERNAME: rohan   #do not change
+      SPRING_DATASOURCE_PASSWORD: rohan   #donot change
+    networks:
+      - rule-engine-net
+
+  mysqldb:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_DATABASE: rule_engine   # Do not change
+      MYSQL_USER: rohan              #Do not change
+      MYSQL_PASSWORD: rohan          #Do not change
+      MYSQL_ROOT_PASSWORD: 9423635767   # replace with your root password of mysql workbench
+    networks:
+      - rule-engine-net
+
+networks:
+  rule-engine-net:

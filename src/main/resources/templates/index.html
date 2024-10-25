@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule Engine</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(45deg, #2e2e2e, #1b1b1b);
+            color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h2 {
+            color: #ffffff;
+        }
+        .card {
+            background-color: #333333;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .card-body h5 {
+            color: #f8f9fa;
+        }
+        .form-control {
+            background-color: #444444;
+            color: #f8f9fa;
+            border: 1px solid #555555;
+        }
+        .form-control::placeholder {
+            color: #999999;
+        }
+        .form-group label {
+            color: #f8f9fa;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #0056b3, #002966);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #004094, #001a66);
+        }
+        .list-group-item {
+            background-color: #444444;
+            color: #f8f9fa;
+            border: none;
+        }
+        /* Scrollable div for stored rules */
+        #ruleList {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">Rule Engine</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Create AST from Single Rule</h5>
+            <form id="singleRuleForm">
+                <div class="form-group">
+                    <label for="singleRule">Enter Single Rule:</label>
+                    <input type="text" class="form-control" id="singleRule" name="rule" placeholder="e.g. age > 30 AND salary < 3000" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Single Rule</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Create AST from Multiple Rules</h5>
+            <form id="multipleRuleForm">
+                <div class="form-group">
+                    <label for="multipleRules">Enter Multiple Rules (separated by commas):</label>
+                    <textarea class="form-control" id="multipleRules" name="rules" rows="3" placeholder="e.g. age < 30, department = 'Service', salary > 50000" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Multiple Rules</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Stored Rules</h5>
+            <ul class="list-group" id="ruleList">
+                <!-- Dynamically load stored rules here -->
+                <li class="list-group-item" th:each="rule : ${rules}">
+                    <strong>Rule ID: </strong><span th:text="${rule.id}"></span> - <span th:text="${rule.ruleText}"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Handle single rule form submission
+    document.getElementById('singleRuleForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const rule = document.getElementById('singleRule').value;
+
+        fetch('/api/rules/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(rule),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Open the new AST in a new tab
+            const newTab = window.open();
+            newTab.document.write('<pre>' + JSON.stringify(data, null, 2) + '</pre>');
+            refreshRuleList(); // Refresh the stored rules list
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+    // Handle multiple rule form submission
+    document.getElementById('multipleRuleForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const rules = document.getElementById('multipleRules').value.split(',');
+
+        fetch('/api/rules/combine', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(rules),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Open the new AST in a new tab
+            const newTab = window.open();
+            newTab.document.write('<pre>' + JSON.stringify(data, null, 2) + '</pre>');
+            refreshRuleList(); // Refresh the stored rules list
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+    // Function to refresh the stored rule list
+    function refreshRuleList() {
+        fetch('/api/rules/all')
+            .then(response => response.json())
+            .then(data => {
+                const ruleList = document.getElementById('ruleList');
+                ruleList.innerHTML = ''; // Clear existing list
+                data.forEach(rule => {
+                    const listItem = document.createElement('li');
+                    listItem.className = 'list-group-item';
+                    listItem.innerHTML = `<strong>Rule ID: </strong> ${rule.id} - ${rule.ruleText}`;
+                    ruleList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Call the function to load the rules on page load
+    document.addEventListener('DOMContentLoaded', refreshRuleList);
+</script>
+
+</body>
+</html>
