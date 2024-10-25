@@ -39,7 +39,7 @@ Follow these steps to set up and run the application:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/ast-rule-engine.git
+git clone https://github.com/rohan-2702/Rule-Engine-AST.git
 cd ast-rule-engine
 ```
 
