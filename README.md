@@ -134,7 +134,7 @@ The system has been thoroughly tested for the following:
 - Flexible Rule Management: Supports combining multiple rules into a single structure, streamlining rule management for complex business logic.
 
 ## 📚 Documentation
-- [Detailed Documentation](Link)
+- [Detailed Documentation](https://drive.google.com/file/d/17tYCxwLhVLe0T4L8AWZ5rqe1mjxxYNOn/view?usp=sharing)
 
 ## 📬 Contact
 For any inquiries, feel free to reach out to me:
